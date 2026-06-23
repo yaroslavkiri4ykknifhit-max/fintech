@@ -1,18 +1,20 @@
 /* src/components/common/PasscodeLock.css */
 
 .passcode-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background: var(--navy-gradient);
   color: #FFFFFF;
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 24px;
+  padding: max(40px, env(safe-area-inset-top)) 24px max(40px, env(safe-area-inset-bottom)) 24px;
 }
 
 .passcode-container {
