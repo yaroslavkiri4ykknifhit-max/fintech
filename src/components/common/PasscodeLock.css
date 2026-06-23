@@ -1,0 +1,168 @@
+/* src/components/common/PasscodeLock.css */
+
+.passcode-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--navy-gradient);
+  color: #FFFFFF;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+.passcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-height: 600px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.passcode-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.lock-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.lock-icon {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.passcode-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.status-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.status-text.error {
+  color: #FF5252;
+  font-weight: 600;
+}
+
+/* Dots display */
+.dots-container {
+  display: flex;
+  gap: 16px;
+  margin: 36px 0;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot.filled {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1.15);
+}
+
+/* Keypad keyboard */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 24px;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+.keypad-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+  font-size: 26px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+  padding: 0;
+}
+
+.keypad-btn:active {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(0.92);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.keypad-btn-secondary {
+  width: 72px;
+  height: 72px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+  padding: 0;
+}
+
+.keypad-btn-secondary:hover {
+  color: #FFFFFF;
+}
+
+.keypad-btn-secondary:active {
+  transform: scale(0.94);
+}
+
+.delete-key {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Shake wrong entry animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
