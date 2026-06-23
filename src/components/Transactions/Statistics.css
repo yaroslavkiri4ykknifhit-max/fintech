@@ -1,0 +1,231 @@
+/* src/components/Transactions/Statistics.css */
+
+.stats-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Row */
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--bg-app);
+  transform: scale(1.05);
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Average Section */
+.average-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.average-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.average-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.average-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.trend-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.trend-badge.down {
+  background-color: var(--color-youtube-bg);
+  color: var(--color-youtube-icon);
+}
+
+.trend-badge.up {
+  background-color: var(--color-salary-bg);
+  color: var(--color-salary-icon);
+}
+
+.trend-arrow {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Chart Container Card */
+.chart-section-card {
+  background: var(--bg-card);
+  border-radius: 28px;
+  padding: 24px 20px;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 10px 25px rgba(22, 32, 37, 0.03);
+  margin-bottom: 24px;
+}
+
+.bar-chart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 150px;
+  width: 100%;
+}
+
+.chart-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.chart-track {
+  position: relative;
+  width: 14px;
+  height: 124px;
+  background-color: #F1F5F9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.chart-bar {
+  width: 100%;
+  background-color: var(--navy-dark);
+  border-radius: 8px;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Saturday highlight */
+.chart-bar.highlighted-bar {
+  background-color: var(--color-youtube-icon);
+}
+
+.chart-day-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Sliding Toggle Slider */
+.toggle-section {
+  margin-bottom: 24px;
+}
+
+.toggle-container {
+  display: flex;
+  background-color: rgba(226, 232, 240, 0.5);
+  border-radius: 20px;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid rgba(226, 232, 240, 0.4);
+}
+
+.toggle-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  height: 38px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-btn.active {
+  background-color: var(--navy-dark);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(30, 43, 50, 0.15);
+}
+
+/* Categories Section */
+.categories-breakdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-item-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 6px 15px rgba(22, 32, 37, 0.02);
+}
+
+.category-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.category-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.category-count {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.category-total {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}

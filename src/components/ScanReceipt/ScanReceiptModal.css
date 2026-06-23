@@ -1,0 +1,422 @@
+/* src/components/ScanReceipt/ScanReceiptModal.css */
+
+.scan-sheet {
+  max-height: 96% !important;
+}
+
+/* State 1: Selection Cards Layout */
+.scan-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.actions-card-container {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.action-card-btn {
+  flex: 1;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.action-card-btn:hover {
+  background-color: #F1F5F9;
+  border-color: var(--navy-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 43, 50, 0.04);
+}
+
+.action-card-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: transform 0.2s ease;
+}
+
+.action-card-btn:hover .action-card-icon-box {
+  transform: scale(1.08);
+}
+
+.camera-accent {
+  background-color: #ECFDF5;
+  color: #10B981;
+}
+
+.file-accent {
+  background-color: #E0F2FE;
+  color: #0284C7;
+}
+
+.action-card-btn h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.action-card-btn p {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.api-notice {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  text-align: center;
+  padding: 10px 14px;
+  background-color: #F1F5F9;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* State 1.5: In-App Camera Viewport */
+.in-app-camera-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.camera-viewport {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #000000;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.camera-video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Custom overlay frame corners for camera scanner */
+.camera-frame-guide {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  bottom: 25%;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.guide-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: #00E676;
+  border-style: solid;
+  border-width: 0;
+}
+
+.top-left {
+  top: -2px;
+  left: -2px;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  border-top-left-radius: 6px;
+}
+
+.top-right {
+  top: -2px;
+  right: -2px;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-top-right-radius: 6px;
+}
+
+.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-bottom-left-radius: 6px;
+}
+
+.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  border-bottom-right-radius: 6px;
+}
+
+.guide-text {
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px 10px;
+}
+
+.camera-cancel-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 60px;
+  text-align: left;
+}
+
+.camera-cancel-btn:hover {
+  color: var(--text-primary);
+}
+
+.camera-shutter-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 4px solid var(--navy-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  padding: 0;
+}
+
+.camera-shutter-btn:active {
+  transform: scale(0.92);
+}
+
+.shutter-inner-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-youtube-icon); /* Red photo trigger button */
+  border: 2px solid #FFFFFF;
+}
+
+/* State 2: Scanning Loading View */
+.scanning-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.receipt-preview-box {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #0F172A;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.receipt-image-blur {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: grayscale(30%) blur(0.5px);
+}
+
+.laser-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #00E676, transparent);
+  box-shadow: 0 0 14px 4px #00E676, 
+              0 0 4px 1px #00E676;
+  animation: laser-sweep 2s infinite linear;
+  z-index: 10;
+}
+
+.scanning-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.spin-loader {
+  color: var(--navy-dark);
+  margin-bottom: 14px;
+  animation: spin 1.4s linear infinite;
+}
+
+.scanning-status h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.scanning-status p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* State 3: Review Form UI */
+.review-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mock-badge-alert {
+  background-color: #FEF3C7;
+  color: #D97706;
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.scanned-visual-preview {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid #E2E8F0;
+}
+
+.scanned-visual-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.visual-dimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 185, 129, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #065F46;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(0.5px);
+}
+
+/* State 4: Error Screen UI */
+.scan-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.error-icon {
+  color: #EF4444;
+  margin-bottom: 16px;
+}
+
+.scan-error-container h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.error-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 280px;
+}
+
+.error-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.error-btn-retry {
+  height: 48px;
+  border-radius: 14px;
+  background-color: var(--navy-dark);
+  color: #FFFFFF;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.error-btn-retry:hover {
+  background-color: var(--navy-deep);
+}
+
+.error-btn-manual {
+  height: 48px;
+  border-radius: 14px;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid #E2E8F0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-btn-manual:hover {
+  background-color: #F1F5F9;
+  color: var(--text-primary);
+}

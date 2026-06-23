@@ -1,0 +1,115 @@
+/* src/components/common/Layout.css */
+
+.device-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.device-screen {
+  position: relative;
+  width: 390px;
+  height: 800px;
+  background-color: var(--bg-app);
+  border-radius: 48px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
+              0 0 0 12px #FFFFFF, /* Sleek white border for phone look */
+              0 0 0 13px #E2E8F0; /* Thin outer gray ring */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@media (max-width: 480px) {
+  .device-screen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.device-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 20px 100px 20px;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Navigation Bar Style */
+.tab-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 36px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: 0 12px 30px rgba(22, 32, 37, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.tab-item:hover {
+  color: var(--navy-dark);
+  transform: translateY(-2px);
+}
+
+.tab-item.active {
+  color: var(--navy-dark);
+  transform: translateY(-4px);
+}
+
+/* Custom Active Dot Indicator */
+.tab-item::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--navy-dark);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-item.active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide scrollbars in device screen */
+.device-content::-webkit-scrollbar {
+  display: none;
+}
+.device-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

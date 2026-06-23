@@ -1,0 +1,150 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-app: #F5F6F8;
+  --bg-body: #E5E7EB;
+  --bg-card: #FFFFFF;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  
+  /* Primary Navy Color Palette */
+  --navy-dark: #1E2B32;
+  --navy-deep: #162025;
+  --navy-gradient: linear-gradient(135deg, #1E2B32 0%, #111A1E 100%);
+  
+  /* Category & Badge Colors (Figma Specific Pastel Backgrounds & Icons) */
+  --color-youtube-bg: #FFF1F1;
+  --color-youtube-icon: #FF3B30;
+  
+  --color-github-bg: #F3F4F6;
+  --color-github-icon: #111827;
+  
+  --color-dribbble-bg: #FFF0F5;
+  --color-dribbble-icon: #EA4C89;
+  
+  --color-food-bg: #E0F2FE;
+  --color-food-icon: #0284C7;
+  
+  --color-shopping-bg: #FFF7ED;
+  --color-shopping-icon: #F97316;
+  
+  --color-entertainment-bg: #FAF5FF;
+  --color-entertainment-icon: #9333EA;
+  
+  --color-salary-bg: #ECFDF5;
+  --color-salary-icon: #10B981;
+  
+  --color-other-bg: #F1F5F9;
+  --color-other-icon: #475569;
+
+  --color-expense: #FF3D00;
+  --color-income: #00E676;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 0;
+  }
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes laser-sweep {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

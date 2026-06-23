@@ -1,0 +1,476 @@
+/* src/components/Dashboard/Dashboard.css */
+
+.dashboard-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Row */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-name {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.current-date {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.notification-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.notification-btn:hover {
+  background: var(--bg-app);
+  transform: scale(1.05);
+}
+
+.bell-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-youtube-icon);
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-card);
+}
+
+/* Mastercard Card */
+.card-section {
+  margin-bottom: 20px;
+}
+
+.mastercard-card {
+  position: relative;
+  height: 180px;
+  background: var(--navy-gradient);
+  border-radius: 28px;
+  padding: 24px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(22, 32, 37, 0.2);
+}
+
+/* Background Curve Graphics */
+.card-bg-circle-1 {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  top: -60px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.card-bg-circle-2 {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  bottom: -40px;
+  left: -20px;
+  pointer-events: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.card-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+.card-menu-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.card-balance {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  z-index: 5;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-holder-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card-number {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
+}
+
+/* Mastercard overlapping circles */
+.mastercard-logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 44px;
+  height: 28px;
+}
+
+.circle-red {
+  width: 24px;
+  height: 24px;
+  background-color: #EB001B;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+}
+
+.circle-orange {
+  width: 24px;
+  height: 24px;
+  background-color: #F79E1B;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  opacity: 0.85;
+}
+
+/* Monthly Mini Stats Dashboard Summary */
+.mini-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-pill {
+  flex: 1;
+  background: var(--bg-card);
+  padding: 12px 14px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.stat-pill-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-pill.income .stat-pill-icon {
+  background: #ECFDF5;
+  color: #10B981;
+}
+
+.stat-pill.expense .stat-pill-icon {
+  background: #FFF1F1;
+  color: #FF3B30;
+}
+
+.stat-pill-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-pill-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.stat-pill-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1px;
+}
+
+/* Quick Actions buttons */
+.quick-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.action-btn {
+  flex: 1;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.income-btn {
+  background: #ECFDF5;
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.income-btn:hover {
+  background: #D1FAE5;
+  transform: translateY(-1px);
+}
+
+.expense-btn {
+  background: #FFF1F1;
+  color: #FF3B30;
+  border: 1px solid rgba(255, 59, 48, 0.15);
+}
+
+.expense-btn:hover {
+  background: #FEE2E2;
+  transform: translateY(-1px);
+}
+
+.scan-btn {
+  background: var(--navy-dark);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(30, 43, 50, 0.25);
+}
+
+.scan-btn:hover {
+  background: var(--navy-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(30, 43, 50, 0.35);
+}
+
+/* Today's Transactions List */
+.transactions-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.2px;
+}
+
+.tx-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tx-item-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 6px 15px rgba(22, 32, 37, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tx-item-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(22, 32, 37, 0.04);
+}
+
+.tx-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.tx-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0; /* Ensures overflow text-ellipsis works */
+}
+
+.tx-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-ellipsis: ellipsis;
+}
+
+.tx-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.tx-dot {
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.tx-method {
+  font-weight: 500;
+}
+
+.tx-amount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+  margin-left: 10px;
+}
+
+.expense-val {
+  color: var(--text-primary); /* In Figma, expenses are dark slate with "-" */
+}
+
+.income-val {
+  color: var(--color-income);
+}
+
+/* Category Configurations (Icons & Pastel Backgrounds) */
+.cat-food-bg { background-color: var(--color-food-bg); }
+.cat-food-icon { color: var(--color-food-icon); }
+
+.cat-youtube-bg { background-color: var(--color-youtube-bg); }
+.cat-youtube-icon { color: var(--color-youtube-icon); }
+
+.cat-github-bg { background-color: var(--color-github-bg); }
+.cat-github-icon { color: var(--color-github-icon); }
+
+.cat-dribbble-bg { background-color: var(--color-dribbble-bg); }
+.cat-dribbble-icon { color: var(--color-dribbble-icon); }
+
+.cat-shopping-bg { background-color: var(--color-shopping-bg); }
+.cat-shopping-icon { color: var(--color-shopping-icon); }
+
+.cat-salary-bg { background-color: var(--color-salary-bg); }
+.cat-salary-icon { color: var(--color-salary-icon); }
+
+.cat-other-bg { background-color: var(--color-other-bg); }
+.cat-other-icon { color: var(--color-other-icon); }
+
+.dribbble-ball {
+  font-size: 18px;
+}
+
+/* Empty States */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px dashed #CBD5E1;
+}
+
+.empty-state p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.empty-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Skeletons */
+.balance-skeleton {
+  display: inline-block;
+  width: 180px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+.tx-skeleton-row {
+  height: 76px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  animation: pulse 1.5s infinite;
+}
