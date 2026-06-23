@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../contexts/AppContext';
 import { Save, RotateCcw, HelpCircle, Key, Server, Database } from 'lucide-react';
+import * as sheetService from '../../services/googleSheets';
 import './Settings.css';
 
 const Settings = () => {
@@ -25,12 +26,12 @@ const Settings = () => {
   const [savedMsg, setSavedMsg] = useState('');
   const [showGuide, setShowGuide] = useState(false);
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     
-    // Save settings overrides
-    localStorage.setItem('override_currency', currency);
-    localStorage.setItem('override_balance', parseFloat(balance) || 0);
+    // Clean up old override keys to ensure dynamic balance works
+    localStorage.removeItem('override_currency');
+    localStorage.removeItem('override_balance');
     
     // Save API overrides (only if user inputted them, otherwise remove to let .env take place)
     if (groqKey) localStorage.setItem('override_groq_api_key', groqKey);
@@ -47,19 +48,24 @@ const Settings = () => {
     if (apiKey) localStorage.setItem('override_google_sheets_api_key', apiKey);
     else localStorage.removeItem('override_google_sheets_api_key');
 
-    // Update actual active settings in localStorage tracker_settings
-    const currentTrackerSettings = JSON.parse(localStorage.getItem('tracker_settings') || '{}');
-    const newSettings = {
-      ...currentTrackerSettings,
-      currentBalance: parseFloat(balance) || 0,
-      currency: currency
-    };
-    localStorage.setItem('tracker_settings', JSON.stringify(newSettings));
+    try {
+      // Save settings directly in local storage and Google Sheets database
+      await sheetService.updateSettings({
+        currentBalance: parseFloat(balance) || 0,
+        currency: currency
+      });
 
-    setSavedMsg('Настройки сохранены! Перезагрузка...');
-    setTimeout(() => {
-      window.location.reload();
-    }, 1200);
+      setSavedMsg('Настройки сохранены! Перезагрузка...');
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
+    } catch (err) {
+      console.error('Failed to save settings:', err);
+      setSavedMsg('Ошибка при сохранении настроек в облако. Сохранено локально.');
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    }
   };
 
   const handleReset = () => {

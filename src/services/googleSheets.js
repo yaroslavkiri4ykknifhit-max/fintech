@@ -191,3 +191,41 @@ export const deleteTransaction = async (id) => {
 
   return { success: true, settings: newSettings };
 };
+
+/**
+ * Update global settings (balance and currency)
+ */
+export const updateSettings = async (settings) => {
+  const local = getLocalData();
+  const newSettings = {
+    ...local.settings,
+    currentBalance: parseFloat(settings.currentBalance) || 0,
+    currency: settings.currency || '$'
+  };
+  
+  saveLocalData(local.transactions, newSettings);
+
+  if (APPS_SCRIPT_URL) {
+    try {
+      console.log('Updating settings in Google Apps Script...');
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify({
+          action: 'update_settings',
+          settings: newSettings
+        })
+      });
+      if (!response.ok) throw new Error('API response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Failed to sync settings to Google Sheets:', error);
+      throw error;
+    }
+  }
+
+  return { success: true, settings: newSettings };
+};
+

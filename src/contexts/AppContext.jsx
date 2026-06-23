@@ -43,30 +43,12 @@ export const AppProvider = ({ children }) => {
         localStorage.setItem('tracker_transactions', JSON.stringify(DEFAULT_TRANSACTIONS));
         localStorage.setItem('tracker_settings', JSON.stringify(DEFAULT_SETTINGS));
         
-        // Apply overrides
-        const overrideCurrency = localStorage.getItem('override_currency');
-        const overrideBalance = localStorage.getItem('override_balance');
-        const seedSettings = {
-          ...DEFAULT_SETTINGS,
-          currency: overrideCurrency || DEFAULT_SETTINGS.currency,
-          currentBalance: overrideBalance !== null ? parseFloat(overrideBalance) : DEFAULT_SETTINGS.currentBalance
-        };
-        
         setTransactions(DEFAULT_TRANSACTIONS);
-        setSettings(seedSettings);
+        setSettings(DEFAULT_SETTINGS);
       } else {
         // Standard flow
-        const activeSettings = data.settings || DEFAULT_SETTINGS;
-        const overrideCurrency = localStorage.getItem('override_currency');
-        const overrideBalance = localStorage.getItem('override_balance');
-        const mergedSettings = {
-          ...activeSettings,
-          currency: overrideCurrency || activeSettings.currency,
-          currentBalance: overrideBalance !== null ? parseFloat(overrideBalance) : activeSettings.currentBalance
-        };
-        
         setTransactions(data.transactions);
-        setSettings(mergedSettings);
+        setSettings(data.settings || DEFAULT_SETTINGS);
       }
     } catch (err) {
       console.error('Failed to load application data:', err);

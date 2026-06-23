@@ -205,6 +205,17 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
   
+  if (action === "update_settings") {
+    var settings = postData.settings;
+    settingsSheet.getRange(2, 1).setValue(parseFloat(settings.currentBalance) || 0);
+    settingsSheet.getRange(2, 2).setValue(settings.currency || "$");
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      settings: settings
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+  
   return ContentService.createTextOutput(JSON.stringify({ error: "Invalid action" }))
     .setMimeType(ContentService.MimeType.JSON);
 }
