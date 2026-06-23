@@ -8,12 +8,17 @@ import ScanReceiptModal from '../ScanReceipt/ScanReceiptModal';
 import './Layout.css';
 
 const Layout = ({ children }) => {
-  const { activeModal, setActiveModal } = useApp();
+  const { activeModal, setActiveModal, error } = useApp();
 
   return (
     <div className="device-container">
       {/* Mobile Shell Mockup */}
       <div className="device-screen">
+        {error && (
+          <div className="global-error-toast">
+            <span>{error}</span>
+          </div>
+        )}
         {/* Main Content Area */}
         <div className="device-content">
           {children}

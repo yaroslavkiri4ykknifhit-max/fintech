@@ -130,7 +130,7 @@ export const addTransaction = async (transaction) => {
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify({
           action: 'add',
@@ -141,7 +141,7 @@ export const addTransaction = async (transaction) => {
       return await response.json();
     } catch (error) {
       console.error('Failed to sync transaction to Google Sheets:', error);
-      // We still return local success so the UI operates smoothly offline/fallback
+      throw error;
     }
   }
 
@@ -174,7 +174,7 @@ export const deleteTransaction = async (id) => {
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify({
           action: 'delete',
@@ -185,6 +185,7 @@ export const deleteTransaction = async (id) => {
       return await response.json();
     } catch (error) {
       console.error('Failed to sync deletion to Google Sheets:', error);
+      throw error;
     }
   }
 

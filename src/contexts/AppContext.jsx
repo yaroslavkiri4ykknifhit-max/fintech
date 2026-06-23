@@ -21,10 +21,19 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [activeModal, setActiveModal] = useState(null); // 'income' | 'expense' | 'scan' | null
 
+  const triggerError = (msg) => {
+    setError(msg);
+    if (msg) {
+      setTimeout(() => {
+        setError(prev => prev === msg ? null : prev);
+      }, 5000);
+    }
+  };
+
   // Load initial data
   const loadData = async () => {
     setLoading(true);
-    setError(null);
+    triggerError(null);
     try {
       const data = await sheetService.fetchAllData();
       
@@ -61,7 +70,7 @@ export const AppProvider = ({ children }) => {
       }
     } catch (err) {
       console.error('Failed to load application data:', err);
-      setError('Could not load data from storage. Using local cache.');
+      triggerError('Не удалось загрузить данные из облака. Используется локальный кэш.');
     } finally {
       setLoading(false);
     }
@@ -94,7 +103,7 @@ export const AppProvider = ({ children }) => {
       }
     } catch (err) {
       console.error('Failed to sync transaction creation:', err);
-      setError('Transaction saved locally but failed to sync online.');
+      triggerError('Ошибка синхронизации. Транзакция сохранена только локально.');
     }
   };
 
@@ -118,7 +127,7 @@ export const AppProvider = ({ children }) => {
       }
     } catch (err) {
       console.error('Failed to sync transaction deletion:', err);
-      setError('Transaction deleted locally but failed to sync online.');
+      triggerError('Ошибка удаления. Транзакция удалена только локально.');
     }
   };
 
