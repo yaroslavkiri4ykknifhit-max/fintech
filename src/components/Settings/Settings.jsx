@@ -16,7 +16,7 @@ const Settings = () => {
   );
   
   const [groqKey, setGroqKey] = useState(localStorage.getItem('override_groq_api_key') || '');
-  const [groqModel, setGroqModel] = useState(localStorage.getItem('override_groq_model') || 'llama-4-scout-17b-16e-instruct');
+  const [groqModel, setGroqModel] = useState(localStorage.getItem('override_groq_model') || 'meta-llama/llama-4-scout-17b-16e-instruct');
   
   const [scriptUrl, setScriptUrl] = useState(localStorage.getItem('override_google_apps_script_url') || '');
   const [sheetId, setSheetId] = useState(localStorage.getItem('override_google_sheets_spreadsheet_id') || '');
@@ -139,7 +139,7 @@ const Settings = () => {
               value={groqModel} 
               onChange={(e) => setGroqModel(e.target.value)}
               className="form-input"
-              placeholder="llama-4-scout-17b-16e-instruct"
+              placeholder="meta-llama/llama-4-scout-17b-16e-instruct"
             />
           </div>
         </div>

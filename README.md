@@ -45,7 +45,7 @@ VITE_GOOGLE_SHEETS_SPREADSHEET_ID=
 
 # Ключ Groq API для распознавания чеков
 VITE_GROQ_API_KEY=gsk_...
-VITE_GROQ_MODEL=llama-3.2-11b-vision-preview # (или llama-4-scout-17b-16e-instruct)
+VITE_GROQ_MODEL=meta-llama/llama-4-scout-17b-16e-instruct
 ```
 *(Если ключи не заданы, приложение будет автоматически работать в офлайн-режиме LocalStorage и симулировать сканирование чеков с красивым лоадером).*
 

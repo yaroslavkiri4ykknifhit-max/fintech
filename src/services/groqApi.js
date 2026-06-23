@@ -1,7 +1,7 @@
 // src/services/groqApi.js
 
 const GROQ_API_KEY = localStorage.getItem('override_groq_api_key') || import.meta.env.VITE_GROQ_API_KEY;
-const GROQ_MODEL = localStorage.getItem('override_groq_model') || import.meta.env.VITE_GROQ_MODEL || 'llama-3.2-11b-vision-preview';
+const GROQ_MODEL = localStorage.getItem('override_groq_model') || import.meta.env.VITE_GROQ_MODEL || 'meta-llama/llama-4-scout-17b-16e-instruct';
 
 /**
  * Utility to convert file to base64
