@@ -14,6 +14,7 @@ import {
   TrendingUp,
   TrendingDown
 } from 'lucide-react';
+import Gauge from '../common/Gauge';
 
 // Custom GitHub SVG Icon to replace deprecated Lucide icon
 const GitHubIcon = ({ size = 20, ...props }) => (
@@ -155,38 +156,26 @@ const Dashboard = () => {
         </button>
       </header>
 
-      {/* Credit Card Section */}
+      {/* Dynamic Animated Gauge Section */}
       <section className="card-section">
-        <div className="mastercard-card">
-          {/* Card Ambient Glow / Wave Shapes */}
-          <div className="card-bg-circle-1"></div>
-          <div className="card-bg-circle-2"></div>
-          
-          <div className="card-header">
-            <span className="card-label">Total Balance</span>
-            <button className="card-menu-btn" aria-label="Card options">•••</button>
-          </div>
-          
-          <div className="card-balance">
-            {loading ? (
-              <span className="balance-skeleton"></span>
-            ) : (
-              formatCurrency(settings.currentBalance, settings.currency)
-            )}
-          </div>
-          
-          <div className="card-footer">
-            <div className="card-info">
-              <span className="card-holder-label">{settings.cardHolder}</span>
-              <span className="card-number">{settings.cardNumber}</span>
-            </div>
-            {/* Mastercard overlapping circles Logo */}
-            <div className="mastercard-logo">
-              <div className="circle-red"></div>
-              <div className="circle-orange"></div>
-            </div>
-          </div>
-        </div>
+        <Gauge
+          activeGradient={["#a855f7", "#06b6d4"]}
+          centerValue={settings.currentBalance}
+          defaultLabel="Total Balance"
+          endAngle={400}
+          formatOptions={{ 
+            style: "currency", 
+            currency: settings.currency === '$' ? 'USD' : (settings.currency === '₽' || settings.currency === 'руб') ? 'RUB' : 'BYN', 
+            maximumFractionDigits: 0 
+          }}
+          inactiveFillOpacity={0.4}
+          inactiveGradient={["#334155", "#38bdf8"]}
+          notchCornerRadius={7}
+          spacing={0}
+          startAngle={140}
+          useGradient
+          value={66}
+        />
       </section>
 
       {/* Monthly Mini Statistics Summary */}
